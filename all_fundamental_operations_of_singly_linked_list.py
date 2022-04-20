@@ -1,4 +1,4 @@
-from selectors import EpollSelector
+# from selectors import EpollSelector
 
 
 class Node:
@@ -62,7 +62,24 @@ class llist:
             prev=n
             n=temp
         self.head=prev
-   
+    
+    #reverse a linked list in a group of given size:
+    def reversegroup(self,k):
+        count=0
+        prev=None
+        current=self.head
+        while current!=None and count<k:
+            temp=current.ref
+            current.ref=prev
+            prev=current
+            current=temp
+            count+=1
+        self.head.ref=temp
+        self.head=prev
+        # self.head=current
+        # #prev.ref=current
+        # self.head=prev
+
     # def delete_end(self):
     #     if self.head==None:
     #        return 'the linked list is empty'
@@ -93,5 +110,10 @@ print()
 
 print('Reverse the linked list')
 ll.reversell()
+ll.printll()
+print()
+
+print('reverse a linked list in a given group!')
+ll.reversegroup(3)
 ll.printll()
 print()
